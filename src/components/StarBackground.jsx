@@ -1,3 +1,4 @@
+// To use this background, import and render <StarBackground /> at the top level of your page/component.
 import { useEffect, useState } from "react";
 
 // id, size, x, y, opacity, animationDuration
@@ -10,11 +11,9 @@ export const StarBackground = () => {
   useEffect(() => {
     generateStars();
     generateMeteors();
-
     const handleResize = () => {
       generateStars();
     };
-
     window.addEventListener("resize", handleResize);
 
     return () => window.removeEventListener("resize", handleResize);
