@@ -40,15 +40,16 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 222 47% 11%;
+    /* Set default to dark mode colors */
+    --background: 222 47% 4%;
+    --foreground: 213 31% 91%;
 
-    --card: 0 0% 100%;
+    --card: 222 47% 8%;
 
     --primary: 335.1 77.6% 42%; /* updated brand color */
-    --primary-foreground: 210 40% 98%;
+    --primary-foreground: 213 31% 91%;
 
-    --border: 214 32% 91%;
+    --border: 217 33% 20%;
   }
 
   .dark {
@@ -63,9 +64,25 @@
     --border: 217 33% 20%;
   }
 
+  .light {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+
+    --primary: 335.1 77.6% 42%; /* updated brand color */
+    --primary-foreground: 210 40% 98%;
+
+    --border: 214 32% 91%;
+  }
+
   * { @apply border-border; }
 
-  html { @apply scroll-smooth; }
+  html { 
+    @apply scroll-smooth;
+    /* Ensure dark mode is applied by default */
+    @apply dark;
+  }
 
   body {
     @apply bg-background text-foreground transition-colors duration-300;

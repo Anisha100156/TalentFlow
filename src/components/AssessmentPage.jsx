@@ -24,6 +24,7 @@ const AssessmentPage = () => {
     const fetchAssessment = async () => {
       try {
         const response = await axios.get(`/api/assessments/${jobId}`);
+        // The API returns an object with assessment property, not the assessment directly
         setAssessment(response.data.assessment);
       } catch (err) {
         setError("Assessment not found or failed to load.");

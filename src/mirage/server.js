@@ -122,12 +122,16 @@ export function makeServer() {
 
       // ===== LOGIN =====
       this.post("/login", async (schema, request) => {
+        console.log("Login request received");
         return injectLatencyAndError(request, () => {
           const { email, password } = JSON.parse(request.requestBody);
+          console.log("Login attempt with:", email, password);
           const user = schema.users.findBy({ email, password });
           if (user) {
+            console.log("Login successful for user:", user.attrs);
             return { success: true, user: user.attrs };
           } else {
+            console.log("Login failed for:", email);
             return new Response(401, {}, { error: "Invalid email or password" });
           }
         });
@@ -269,6 +273,11 @@ export function makeServer() {
           return { success: true, responses };
         })
       );
+      
+      // Add a catch-all route for debugging
+      this.get("/assessments", (schema) => {
+        return schema.assessments.all();
+      });
     },
   });
 }

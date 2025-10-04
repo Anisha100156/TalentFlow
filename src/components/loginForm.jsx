@@ -15,10 +15,15 @@ const LoginSignup = () => {
   const handleLoginSubmit = async (e) => {
     e.preventDefault();
     try {
+      console.log("Attempting login with:", { email, password });
       const res = await fetch("/api/login", {
         method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({ email, password }),
       });
+      console.log("Login response:", res);
 
       if (!res.ok) throw new Error("Login failed");
       const data = await res.json();
@@ -54,7 +59,7 @@ const LoginSignup = () => {
         className:
           "bg-red-600 text-white font-semibold border border-red-700 rounded-lg shadow-lg",
       });
-      console.log("Login failed");
+      console.log("Login failed", err);
     }
   };
 

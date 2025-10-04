@@ -29,11 +29,16 @@ const AssessmentBuilder = () => {
       if (job) {
         try {
           const response = await axios.get(`/api/assessments/${job.id}`);
-          if (response.data.assessments && response.data.assessments.length > 0) {
-            setExistingAssessments(response.data.assessments);
+          console.log("API Response:", response.data);
+          // The API returns a single assessment object, not an array
+          if (response.data.assessment) {
+            setExistingAssessments([response.data.assessment]);
+          } else {
+            setExistingAssessments([]);
           }
         } catch (error) {
           console.error("Error loading existing assessments:", error);
+          setExistingAssessments([]);
         }
       }
     };
@@ -126,7 +131,7 @@ const AssessmentBuilder = () => {
     }
 
     // Generate a unique ID for new assessments
-    const assessmentId = editingId || `assessment-${job.id}-${Date.now()}`;
+    const assessmentId = editingId || `assessment-${job.id}`;
 
     const assessmentData = {
       id: assessmentId,
@@ -153,8 +158,12 @@ const AssessmentBuilder = () => {
       
       // Refresh the list of assessments
       const updatedResponse = await axios.get(`/api/assessments/${job.id}`);
-      if (updatedResponse.data.assessments) {
-        setExistingAssessments(updatedResponse.data.assessments);
+      console.log("Updated response:", updatedResponse.data);
+      // The API returns a single assessment object, not an array
+      if (updatedResponse.data.assessment) {
+        setExistingAssessments([updatedResponse.data.assessment]);
+      } else {
+        setExistingAssessments([]);
       }
     } catch (error) {
       console.error("Error saving assessment:", error);

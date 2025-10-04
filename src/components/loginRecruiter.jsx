@@ -52,15 +52,20 @@ const LoginRecruiter = () => {
           onSubmit={async (e) => {
             e.preventDefault();
             try {
+              console.log("Attempting login with:", { email, password });
               const res = await fetch("/api/login", {
                 method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
                 body: JSON.stringify({ email, password }),
               });
+              console.log("Login response:", res);
               if (!res.ok) throw new Error("Login failed");
               const data = await res.json();
               if (data.user.role !== "recruiter") {
                 toast({
-                  title: "❌ Access Denied",
+                  title: " Access Denied",
                   description: "Only recruiter accounts can log in here.",
                   className: "bg-red-600 text-white font-semibold border border-red-700 rounded-lg shadow-lg",
                 });
@@ -68,7 +73,7 @@ const LoginRecruiter = () => {
               }
               localStorage.setItem("user", JSON.stringify(data.user));
               toast({
-                title: "✅ Logged in Successfully",
+                title: " Logged in Successfully",
                 description: `Welcome back, ${data.user.name}!`,
                 className: "bg-green-600 text-white font-semibold border border-green-700 rounded-lg shadow-lg",
               });
@@ -77,10 +82,11 @@ const LoginRecruiter = () => {
               }, 1500);
             } catch (err) {
               toast({
-                title: "❌ Login Failed",
+                title: " Login Failed",
                 description: "Invalid email or password. Please try again.",
                 className: "bg-red-600 text-white font-semibold border border-red-700 rounded-lg shadow-lg",
               });
+              console.log("Login failed", err);
             }
           }}
           className="flex flex-col w-full items-center justify-center gap-3 bg-[#303030] p-6 rounded-xl text-white"

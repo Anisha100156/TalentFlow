@@ -5,12 +5,12 @@ import { NotFound } from "./components/NotFound";
 import RecruiterDashboard from "./components/RecruiterDashboard";
 
 import { Toaster } from "@/components/ui/toaster";
-import ViewJob from "./pages/ViewJob";
-import AssessmentBuilder from "./pages/AssessmentBuilder";
-import KanbanBoard from "./pages/KanbanBoard";
+import ViewJob from "./components/ViewJob";
+import AssessmentBuilder from "./components/AssessmentBuilder";
+import KanbanBoard from "./components/KanbanBoard";
 import HRDashboard from "./components/RecruiterDashboard";
-import AssessmentPage from "./pages/AssessmentPage";
-import CandidatesDashboard from "./pages/candidates";
+import AssessmentPage from "./components/AssessmentPage";
+import CandidatesDashboard from "./components/candidates";
 import CandidateDashboard from "./components/CandidateDashBoard";
 
 function App() {
