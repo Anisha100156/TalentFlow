@@ -239,7 +239,13 @@ src/
 The application uses MirageJS for authentication, which is enabled in both development and production environments. This ensures that the login functionality works correctly when deployed without requiring a real backend.
 
 ### Dark Mode Default
-Dark mode is set as the default theme for all users. Users can toggle to light mode using the theme toggle button in the top right corner, and their preference will be saved in localStorage.
+Dark mode is set as the default theme for all users. Users can toggle to light mode using the theme toggle button in the top right corner, and their preference will be saved in localStorage. The dark mode is implemented using CSS classes that are toggled on the root HTML element.
+
+### Build Issues
+If you encounter build errors related to Tailwind CSS utilities:
+1. Ensure you're using Tailwind CSS v4 or later
+2. Check that custom utilities are properly defined using the `@utility` directive
+3. Avoid using `@apply` with unknown classes like `dark` which is not a standard Tailwind utility
 
 ## Future Improvements
 
@@ -285,5 +291,4 @@ Dark mode is set as the default theme for all users. Users can toggle to light m
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.#   T a l e n t F l o w  
- 
+This project is licensed under the MIT License - see the LICENSE file for details.#
