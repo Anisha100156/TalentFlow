@@ -2,6 +2,10 @@
 
 TalentFlow is a modern recruitment management platform built with React, Vite, and Tailwind CSS. It provides a comprehensive solution for managing job postings, candidate applications, and the recruitment workflow with separate dashboards for recruiters and candidates.
 
+
+![TalentFlow Preview](public/previews.png)
+
+
 ## Table of Contents
 
 - [Features](#features)
@@ -288,5 +292,6 @@ If you encounter build errors related to Tailwind CSS utilities:
 3. Commit your changes
 4. Push to the branch
 5. Create a Pull Request
+
 
 
